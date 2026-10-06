@@ -306,7 +306,7 @@ export async function makeIcons(
         for (let n = 2; names.has(name); n++) name = `${slugify(list[index], "ikon")}-${n}`;
         names.add(name);
         const verdict = await traceIcon(images, path.join(dir, `${name}.svg`), signal);
-        if (verdict.ok) files.push({ name: `${name}.svg`, url: fileUrl("icons", set, `${name}.svg`) });
+        if (verdict.ok) files.push({ name: `${name}.svg`, url: fileUrl("icons", set, `${name}.svg`), path: path.join(dir, `${name}.svg`) });
         else emit({ type: "log", message: `"${list[index]}" gagal dijadikan SVG (${verdict.reason}).` });
         emit({ type: "progress", stage: "icons", value: ++done, total: list.length });
       },
@@ -343,7 +343,7 @@ export async function makePictures(
   for (const [index, png] of images.entries()) {
     const name = `${base}${images.length > 1 ? `-${index + 1}` : ""}.jpg`;
     await saveJpeg(png, path.join(dir, name), signal);
-    files.push({ name, url: fileUrl("images", name) });
+    files.push({ name, url: fileUrl("images", name), path: path.join(dir, name) });
   }
   emit({ type: "done", message: `${files.length} gambar siap di output/images/.`, files });
   return files;
@@ -387,7 +387,7 @@ export async function exportDeck(slug: string, emit: Emit, signal?: AbortSignal)
   const files: ResultFile[] = [];
   for (const name of names) {
     const exists = await fs.access(path.join(outDir, name)).then(() => true, () => false);
-    if (exists) files.push({ name, url: fileUrl("export", slug, name) });
+    if (exists) files.push({ name, url: fileUrl("export", slug, name), path: path.join(outDir, name) });
   }
   if (!files.some((file) => file.name.endsWith(".pptx"))) throw new Error(`Ekspor gagal (kode ${code}). Lihat log di atas.`);
 

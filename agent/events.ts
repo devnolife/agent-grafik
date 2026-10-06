@@ -4,6 +4,8 @@ export interface ResultFile {
   name: string;
   /** Download URL served by the studio (`/api/agent/files/...`). */
   url: string;
+  /** Absolute path on the server. */
+  path: string;
 }
 
 export type AgentEvent =
@@ -33,7 +35,7 @@ export const consoleEmit: Emit = (event) => {
       break;
     case "done":
       console.log(`\n✔ ${event.message}`);
-      for (const file of event.files ?? []) console.log(`  ${file.name}`);
+      for (const file of event.files ?? []) console.log(`  ${file.path}`);
       break;
     case "error":
       console.error(`\n✖ ${event.message}`);

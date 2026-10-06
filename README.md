@@ -55,6 +55,15 @@ Tempel data asli di kolom **Materi sumber** agar slide angka dan kutipan boleh d
 ComfyUI di server ini dipakai bersama. Agent hanya membatalkan prompt miliknya sendiri, gambar diambil lewat folder
 temp ComfyUI (tidak menumpuk di disk server), dan satu graph memuat setiap model sekali untuk banyak gambar.
 
+## Prompt untuk project lain
+
+Dua prompt Copilot Chat di `prompts/` (salinannya sudah terpasang global di folder prompt VS Code, jadi muncul di semua workspace):
+
+- `/agent-grafik deck: …` / `ikon: …` / `gambar: …`: AI di project lain memanggil CLI agent ini lalu menyalin hasilnya ke project itu.
+- `/bangun-agent-grafik <fitur>`: membangun fitur serupa di project lain dengan arsitektur dan pengaturan yang sudah teruji di sini.
+
+Mesin lain: salin `prompts/*.prompt.md` ke folder prompt pengguna VS Code (`Chat: Configure Prompt Files…`).
+
 ## Struktur
 
 - `agent/`: planner (Ollama), klien ComfyUI, pipeline, CLI, API studio (`vite-plugin.ts`, hanya di `npm run dev`)

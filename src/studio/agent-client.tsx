@@ -133,4 +133,4 @@ export function summarize(job: JobSnapshot): JobSummary {
   return summary;
 }
 
-export const fileUrl = (file: ResultFile, download = false) => (download ? `${file.url}?download=1` : file.url);
+export const fileUrl = (file: Pick<ResultFile, "url">, download = false) => (download ? `${file.url}?download=1` : file.url);

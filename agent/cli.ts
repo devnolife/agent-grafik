@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 import fs from "node:fs";
+import path from "node:path";
 import { parseArgs } from "node:util";
 import { THEME_IDS, type ImageShape, type ThemeId } from "../src/engine/spec.ts";
 import { comfyHealth } from "./comfy.ts";
-import { config } from "./config.ts";
+import { config, deckDir } from "./config.ts";
 import { consoleEmit } from "./events.ts";
 import { listModels } from "./ollama.ts";
 import { exportDeck, generateDeck, makeIcons, makePictures, repaintPictures, restyleIcons, type IconMode, type Quality } from "./pipeline.ts";
@@ -100,7 +101,8 @@ async function main() {
         consoleEmit,
         signal,
       );
-      console.log(`\nStudio: npm run dev → http://localhost:5173/?deck=${slug}`);
+      console.log(`\nDeck: ${path.join(deckDir(slug), "deck.json")}`);
+      console.log(`Studio: npm run dev → http://localhost:5173/?deck=${slug}`);
       if (flags.export) await exportDeck(slug, consoleEmit, signal);
       return;
     }

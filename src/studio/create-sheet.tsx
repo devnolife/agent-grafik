@@ -138,9 +138,11 @@ function StatusLine() {
   );
 }
 
+type LibraryFile = Pick<ResultFile, "name" | "url">;
+
 interface Library {
-  icons: { set: string; files: ResultFile[] }[];
-  images: ResultFile[];
+  icons: { set: string; files: LibraryFile[] }[];
+  images: LibraryFile[];
 }
 
 function useLibrary(active: boolean, refresh: unknown) {
