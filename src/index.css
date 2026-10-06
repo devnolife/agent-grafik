@@ -8,6 +8,8 @@
 @theme inline {
     --font-heading: var(--font-sans);
     --font-sans: 'Geist Variable', sans-serif;
+    --color-brand: var(--brand);
+    --color-brand-foreground: var(--brand-foreground);
     --color-sidebar-ring: var(--sidebar-ring);
     --color-sidebar-border: var(--sidebar-border);
     --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -81,23 +83,25 @@
     --sidebar-accent-foreground: oklch(0.205 0 0);
     --sidebar-border: oklch(0.922 0 0);
     --sidebar-ring: oklch(0.708 0 0);
+    --brand: oklch(0.72 0.17 55);
+    --brand-foreground: oklch(0.2 0.03 55);
 }
 
 .dark {
-    --background: oklch(0.145 0 0);
-    --foreground: oklch(0.985 0 0);
-    --card: oklch(0.205 0 0);
-    --card-foreground: oklch(0.985 0 0);
-    --popover: oklch(0.205 0 0);
-    --popover-foreground: oklch(0.985 0 0);
-    --primary: oklch(0.922 0 0);
-    --primary-foreground: oklch(0.205 0 0);
-    --secondary: oklch(0.269 0 0);
-    --secondary-foreground: oklch(0.985 0 0);
-    --muted: oklch(0.269 0 0);
-    --muted-foreground: oklch(0.708 0 0);
-    --accent: oklch(0.269 0 0);
-    --accent-foreground: oklch(0.985 0 0);
+    --background: oklch(0.155 0.006 270);
+    --foreground: oklch(0.975 0.003 270);
+    --card: oklch(0.195 0.007 270);
+    --card-foreground: oklch(0.975 0.003 270);
+    --popover: oklch(0.205 0.008 270);
+    --popover-foreground: oklch(0.975 0.003 270);
+    --primary: oklch(0.93 0.004 270);
+    --primary-foreground: oklch(0.2 0.006 270);
+    --secondary: oklch(0.26 0.008 270);
+    --secondary-foreground: oklch(0.975 0.003 270);
+    --muted: oklch(0.255 0.008 270);
+    --muted-foreground: oklch(0.715 0.012 270);
+    --accent: oklch(0.27 0.01 270);
+    --accent-foreground: oklch(0.975 0.003 270);
     --destructive: oklch(0.704 0.191 22.216);
     --border: oklch(1 0 0 / 10%);
     --input: oklch(1 0 0 / 15%);
@@ -115,6 +119,8 @@
     --sidebar-accent-foreground: oklch(0.985 0 0);
     --sidebar-border: oklch(1 0 0 / 10%);
     --sidebar-ring: oklch(0.556 0 0);
+    --brand: oklch(0.8 0.15 70);
+    --brand-foreground: oklch(0.22 0.04 60);
 }
 
 @layer base {
@@ -127,6 +133,20 @@
   html {
     @apply font-sans;
     }
+}
+
+/* ---------------------------------------------------------------------------
+   Studio chrome
+   --------------------------------------------------------------------------- */
+.studio-canvas {
+  background-color: color-mix(in oklch, var(--background), black 22%);
+  background-image: radial-gradient(circle at 1px 1px, color-mix(in oklch, var(--foreground), transparent 90%) 1px, transparent 0);
+  background-size: 22px 22px;
+}
+
+.brand-gradient {
+  background-image: linear-gradient(135deg, oklch(0.86 0.14 85), oklch(0.74 0.18 50));
+  color: var(--brand-foreground);
 }
 
 /* ---------------------------------------------------------------------------

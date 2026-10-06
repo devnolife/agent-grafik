@@ -1,0 +1,193 @@
+{
+  "slug": "pengantar-energi-surya-atap",
+  "title": "Pengantar Energi Surya Atap",
+  "subtitle": "Memanfaatkan tenaga matahari untuk rumah tangga di Indonesia, hemat biaya dan berkelanjutan.",
+  "author": "Tim Agent Grafik",
+  "lang": "id",
+  "theme": "aurora",
+  "slides": [
+    {
+      "id": "01-cover",
+      "layout": "cover",
+      "title": "Energi Surya Atap: Solusi Listrik Ramah Lingkungan",
+      "notes": "Selamat datang! Presentasi ini akan membahas energi surya atap untuk rumah tangga di Indonesia. Kita akan membahas cara kerja, manfaat, pemasangan, dan perawatannya.",
+      "subtitle": "Memanfaatkan tenaga matahari untuk rumah tangga di Indonesia, hemat biaya dan berkelanjutan.",
+      "image": {
+        "prompt": "A vibrant, stylized 3D illustration of a modern Indonesian house with sleek solar panels integrated into the roof, bathed in golden sunlight, with lush tropical foliage surrounding it.",
+        "alt": "Rumah dengan panel surya",
+        "src": "01-cover-101im7i.jpg"
+      }
+    },
+    {
+      "id": "02-steps",
+      "layout": "steps",
+      "title": "Panel Surya Bekerja",
+      "notes": "Panel surya mengubah energi cahaya matahari menjadi energi listrik. Proses ini melibatkan sel surya, inverter, dan jaringan listrik rumah Anda.",
+      "items": [
+        {
+          "title": "Cahaya Matahari",
+          "text": "Foton mengenai sel surya.",
+          "icon": "sun",
+          "iconSrc": "icon-solid-sun.svg"
+        },
+        {
+          "title": "Energi DC",
+          "text": "Menghasilkan listrik arus searah.",
+          "icon": "battery",
+          "iconSrc": "icon-solid-battery.svg"
+        },
+        {
+          "title": "Inverter",
+          "text": "Mengubah DC menjadi AC.",
+          "icon": "zap",
+          "iconSrc": "icon-solid-zap.svg"
+        },
+        {
+          "title": "Listrik Rumah",
+          "text": "Menyalakan peralatan elektronik.",
+          "icon": "home",
+          "iconSrc": "icon-solid-home.svg"
+        }
+      ]
+    },
+    {
+      "id": "03-cards",
+      "layout": "cards",
+      "title": "Hemat Biaya Listrik",
+      "notes": "Energi surya atap dapat secara signifikan mengurangi tagihan listrik bulanan Anda. Meskipun ada investasi awal, pengembaliannya cukup menjanjikan.",
+      "items": [
+        {
+          "title": "Pengurangan Tagihan",
+          "text": "Potensi hemat hingga 50%",
+          "icon": "dollar-sign",
+          "iconSrc": "icon-solid-dollar-sign.svg"
+        },
+        {
+          "title": "Investasi Jangka Panjang",
+          "text": "ROI dalam 5-10 tahun.",
+          "icon": "arrow-up-circle",
+          "iconSrc": "icon-solid-arrow-up-circle.svg"
+        }
+      ]
+    },
+    {
+      "id": "04-compare",
+      "layout": "compare",
+      "title": "On-Grid vs Off-Grid",
+      "notes": "Sistem on-grid terhubung ke jaringan listrik PLN, sementara sistem off-grid mandiri dan membutuhkan baterai untuk menyimpan energi.",
+      "columns": [
+        {
+          "heading": "On-Grid",
+          "points": [
+            "Terhubung ke PLN.",
+            "Ekspor ke jaringan.",
+            "Biaya awal lebih rendah."
+          ],
+          "icon": "network",
+          "iconSrc": "icon-solid-network.svg"
+        },
+        {
+          "heading": "Off-Grid",
+          "points": [
+            "Mandiri energi.",
+            "Butuh baterai.",
+            "Biaya awal lebih tinggi."
+          ],
+          "icon": "battery-charging",
+          "iconSrc": "icon-solid-battery-charging.svg"
+        }
+      ]
+    },
+    {
+      "id": "05-split",
+      "layout": "split",
+      "title": "Pemasangan Panel Surya",
+      "notes": "Proses pemasangan melibatkan survei lokasi, pemasangan rangka, dan pemasangan panel surya itu sendiri. Pastikan menggunakan jasa profesional.",
+      "body": "Pemasangan harus dilakukan oleh tenaga ahli bersertifikasi untuk memastikan keamanan dan efisiensi sistem.",
+      "items": [
+        {
+          "title": "Survei Lokasi",
+          "icon": "map-pin",
+          "iconSrc": "icon-solid-map-pin.svg"
+        },
+        {
+          "title": "Pemasangan Rangka",
+          "icon": "construction",
+          "iconSrc": "icon-solid-construction.svg"
+        },
+        {
+          "title": "Pemasangan Panel",
+          "icon": "solar-panel",
+          "iconSrc": "icon-solid-solar-panel.svg"
+        }
+      ],
+      "image": {
+        "prompt": "A clean, editorial illustration depicting a technician carefully installing a solar panel on a pitched roof of a modern house, with safety equipment visible.",
+        "alt": "Teknisi memasang panel surya",
+        "src": "05-split-1rscp53.jpg"
+      }
+    },
+    {
+      "id": "06-cards",
+      "layout": "cards",
+      "title": "Tips Perawatan Panel Surya",
+      "notes": "Perawatan rutin sangat penting untuk menjaga kinerja dan umur panjang panel surya Anda. Lakukan pembersihan, periksa kabel, dan pantau kinerjanya.",
+      "items": [
+        {
+          "title": "Pembersihan Rutin",
+          "text": "Bersihkan panel secara berkala.",
+          "icon": "spray",
+          "iconSrc": "icon-solid-spray.svg"
+        },
+        {
+          "title": "Periksa Kabel",
+          "text": "Pastikan tidak ada kerusakan.",
+          "icon": "cable",
+          "iconSrc": "icon-solid-cable.svg"
+        },
+        {
+          "title": "Pantau Kinerja",
+          "text": "Gunakan aplikasi monitoring.",
+          "icon": "eye",
+          "iconSrc": "icon-solid-eye.svg"
+        },
+        {
+          "title": "Servis Berkala",
+          "text": "Lakukan servis oleh ahli.",
+          "icon": "tools",
+          "iconSrc": "icon-solid-tools.svg"
+        }
+      ]
+    },
+    {
+      "id": "07-closing",
+      "layout": "closing",
+      "title": "Energi Surya: Investasi Masa Depan",
+      "notes": "Terima kasih atas perhatiannya. Mari bersama-sama menciptakan masa depan energi yang lebih bersih dan berkelanjutan dengan energi surya.",
+      "subtitle": "Beralih ke energi surya adalah langkah cerdas untuk lingkungan dan keuangan Anda.",
+      "items": [
+        {
+          "title": "Konsultasi Ahli",
+          "icon": "user",
+          "iconSrc": "icon-solid-user.svg"
+        },
+        {
+          "title": "Hitung ROI",
+          "icon": "calculator",
+          "iconSrc": "icon-solid-calculator.svg"
+        },
+        {
+          "title": "Mulai Instalasi",
+          "icon": "arrow-right-circle",
+          "iconSrc": "icon-solid-arrow-right-circle.svg"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "brief": "Pengantar energi surya atap untuk rumah tangga di Indonesia: cara kerja panel surya, manfaat hemat listrik, langkah pemasangan, perbandingan on-grid dan off-grid, serta tips perawatan",
+    "model": "gemma3:27b",
+    "imageModel": "FLUX.2 [dev] Turbo",
+    "generatedAt": "2026-10-06T04:41:04.223Z"
+  }
+}

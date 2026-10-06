@@ -1,0 +1,225 @@
+{
+  "slug": "layout-test",
+  "title": "Keamanan Siber untuk UMKM",
+  "subtitle": "Langkah praktis melindungi data bisnis tanpa tim IT besar",
+  "author": "Tim Agent Grafik",
+  "lang": "id",
+  "theme": "aurora",
+  "slides": [
+    {
+      "id": "01-cover",
+      "layout": "cover",
+      "title": "Keamanan Siber untuk UMKM",
+      "eyebrow": "Workshop literasi digital",
+      "notes": "Buka dengan satu pertanyaan: apa yang terjadi jika data pelanggan Anda hilang besok pagi?",
+      "subtitle": "Langkah praktis melindungi data bisnis tanpa tim IT besar",
+      "image": {
+        "prompt": "a glowing translucent shield above a minimal network of nodes",
+        "alt": "Perisai digital di atas jaringan"
+      }
+    },
+    {
+      "id": "02-section",
+      "layout": "section",
+      "title": "Kenali ancaman yang paling sering terjadi",
+      "notes": "Transisi ke bagian ancaman.",
+      "subtitle": "Tiga pola serangan yang menyasar usaha kecil"
+    },
+    {
+      "id": "03-cards",
+      "layout": "cards",
+      "title": "Tiga jalur serangan yang paling sering menimpa UMKM",
+      "eyebrow": "Ancaman utama",
+      "notes": "Berikan satu contoh nyata untuk setiap kartu.",
+      "items": [
+        {
+          "title": "Phishing",
+          "text": "Pesan palsu yang memancing Anda memberikan kata sandi.",
+          "icon": "mail-warning"
+        },
+        {
+          "title": "Ransomware",
+          "text": "Data dikunci dan pelaku meminta tebusan.",
+          "icon": "lock-keyhole"
+        },
+        {
+          "title": "Akun bocor",
+          "text": "Kata sandi yang sama dipakai di banyak layanan.",
+          "icon": "key-round"
+        }
+      ]
+    },
+    {
+      "id": "04-cards",
+      "layout": "cards",
+      "title": "Empat kebiasaan kecil yang menutup sebagian besar celah",
+      "eyebrow": "Pertahanan dasar",
+      "items": [
+        {
+          "title": "Kata sandi unik",
+          "text": "Gunakan pengelola kata sandi.",
+          "icon": "key-round"
+        },
+        {
+          "title": "Verifikasi dua langkah",
+          "text": "Aktifkan di email dan bank.",
+          "icon": "smartphone"
+        },
+        {
+          "title": "Pembaruan rutin",
+          "text": "Perbarui aplikasi tiap bulan.",
+          "icon": "refresh-cw"
+        },
+        {
+          "title": "Cadangan data",
+          "text": "Simpan salinan di tempat terpisah.",
+          "icon": "database-backup"
+        }
+      ]
+    },
+    {
+      "id": "05-steps",
+      "layout": "steps",
+      "title": "Jika terjadi insiden, ikuti lima langkah ini",
+      "eyebrow": "Alur respons",
+      "items": [
+        {
+          "title": "Isolasi",
+          "text": "Putuskan perangkat dari jaringan.",
+          "icon": "plug-zap"
+        },
+        {
+          "title": "Catat",
+          "text": "Tulis waktu dan gejala.",
+          "icon": "notebook-pen"
+        },
+        {
+          "title": "Ganti sandi",
+          "text": "Mulai dari email utama.",
+          "icon": "key-round"
+        },
+        {
+          "title": "Pulihkan",
+          "text": "Gunakan cadangan terakhir.",
+          "icon": "history"
+        },
+        {
+          "title": "Evaluasi",
+          "text": "Perbaiki penyebabnya.",
+          "icon": "clipboard-check"
+        }
+      ]
+    },
+    {
+      "id": "06-compare",
+      "layout": "compare",
+      "title": "Tanpa kebiasaan aman versus dengan kebiasaan aman",
+      "eyebrow": "Perbandingan",
+      "columns": [
+        {
+          "heading": "Tanpa kebiasaan aman",
+          "points": [
+            "Satu kata sandi untuk semua akun",
+            "Tidak ada cadangan data",
+            "Mengklik tautan tanpa memeriksa"
+          ],
+          "icon": "shield-alert"
+        },
+        {
+          "heading": "Dengan kebiasaan aman",
+          "points": [
+            "Kata sandi unik dan terkelola",
+            "Cadangan otomatis tiap malam",
+            "Memeriksa pengirim sebelum klik",
+            "Verifikasi dua langkah aktif"
+          ],
+          "icon": "shield-check"
+        }
+      ]
+    },
+    {
+      "id": "07-stats",
+      "layout": "stats",
+      "title": "Angka yang menunjukkan mengapa pencegahan murah itu penting",
+      "eyebrow": "Fakta",
+      "items": [
+        {
+          "title": "Serangan",
+          "text": "menyasar usaha kecil",
+          "value": "43%",
+          "icon": "target"
+        },
+        {
+          "title": "Lebih murah",
+          "text": "mencegah daripada memulihkan",
+          "value": "3x",
+          "icon": "piggy-bank"
+        },
+        {
+          "title": "Pemantauan",
+          "text": "cukup dengan notifikasi",
+          "value": "24/7",
+          "icon": "bell-ring"
+        }
+      ]
+    },
+    {
+      "id": "08-quote",
+      "layout": "quote",
+      "title": "Keamanan bukan produk yang dibeli sekali, melainkan kebiasaan yang dijaga setiap hari.",
+      "quote": {
+        "text": "Keamanan bukan produk yang dibeli sekali, melainkan kebiasaan yang dijaga setiap hari.",
+        "by": "Prinsip dasar keamanan informasi"
+      }
+    },
+    {
+      "id": "09-split",
+      "layout": "split",
+      "title": "Aktifkan verifikasi dua langkah di akun terpenting Anda",
+      "eyebrow": "Mulai hari ini",
+      "body": "Cukup lima menit untuk email, bank, dan marketplace. Ini langkah dengan dampak terbesar.",
+      "items": [
+        {
+          "title": "Email utama",
+          "icon": "mail"
+        },
+        {
+          "title": "Rekening dan dompet digital",
+          "icon": "wallet"
+        },
+        {
+          "title": "Akun marketplace",
+          "icon": "store"
+        }
+      ],
+      "image": {
+        "prompt": "a hand holding a luminous padlock made of light particles",
+        "alt": "Tangan memegang gembok bercahaya"
+      }
+    },
+    {
+      "id": "10-closing",
+      "layout": "closing",
+      "title": "Mulai dari satu kebiasaan baik minggu ini",
+      "subtitle": "Keamanan yang konsisten lebih berharga daripada alat yang mahal",
+      "items": [
+        {
+          "title": "Aktifkan 2FA",
+          "icon": "smartphone"
+        },
+        {
+          "title": "Buat cadangan",
+          "icon": "database-backup"
+        },
+        {
+          "title": "Latih tim",
+          "icon": "users"
+        }
+      ],
+      "image": {
+        "prompt": "a sunrise over a calm glowing horizon of soft light lines",
+        "alt": "Cahaya fajar"
+      }
+    }
+  ]
+}

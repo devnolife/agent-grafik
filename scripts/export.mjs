@@ -12,6 +12,7 @@
  */
 import { spawnSync } from "node:child_process";
 import fs from "node:fs/promises";
+import os from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { chromium } from "playwright";
@@ -53,7 +54,8 @@ function parseArgs(argv) {
 }
 
 async function launchBrowser(preferred) {
-  const channels = preferred ? [preferred] : ["msedge", "chrome", "chromium"];
+  const defaults = process.platform === "win32" ? ["msedge", "chrome", "chromium"] : ["chrome", "chromium"];
+  const channels = preferred ? [preferred] : defaults;
   for (const channel of channels) {
     try {
       return channel === "chromium" ? await chromium.launch() : await chromium.launch({ channel });
@@ -291,6 +293,35 @@ function run(command, args) {
   return result.status ?? 1;
 }
 
+/** Linux/macOS stand-in for PowerPoint's renderer: LibreOffice → PDF → one PNG per slide (1920×1080). */
+async function renderPptxWithLibreOffice(pptxFile, outDir) {
+  const work = await fs.mkdtemp(path.join(os.tmpdir(), "agent-grafik-pptx-"));
+  try {
+    await fs.mkdir(outDir, { recursive: true });
+    const converted = spawnSync(
+      "soffice",
+      ["--headless", "--norestore", `-env:UserInstallation=file://${work}/profile`, "--convert-to", "pdf", "--outdir", work, pptxFile],
+      { cwd: ROOT, stdio: ["ignore", "ignore", "inherit"], timeout: 180_000 },
+    );
+    const pdf = path.join(work, `${path.basename(pptxFile, ".pptx")}.pdf`);
+    if (converted.status !== 0) return 1;
+    await fs.access(pdf);
+    const rasterised = spawnSync("pdftoppm", ["-r", "144", "-png", pdf, path.join(work, "page")], { stdio: "inherit" });
+    if (rasterised.status !== 0) return 1;
+    const pages = (await fs.readdir(work)).filter((name) => /^page-\d+\.png$/.test(name));
+    for (const name of pages) {
+      const number = Number(name.match(/\d+/)[0]);
+      await fs.copyFile(path.join(work, name), path.join(outDir, `slide-${pad(number)}.png`));
+    }
+    log("render", `LibreOffice → ${pages.length} PNG`);
+    return 0;
+  } catch {
+    return 1;
+  } finally {
+    await fs.rm(work, { recursive: true, force: true });
+  }
+}
+
 async function main() {
   const args = parseArgs(process.argv.slice(2));
   const started = Date.now();
@@ -372,24 +403,32 @@ async function main() {
   }
 
   if (args.render) {
-    log("render", "PowerPoint → PNG");
-    const status = run("powershell", [
-      "-NoProfile",
-      "-ExecutionPolicy",
-      "Bypass",
-      "-File",
-      path.join(ROOT, "scripts", "render-pptx.ps1"),
-      "-Pptx",
-      pptxFile,
-      "-OutDir",
-      path.join(outDir, "pptx-render"),
-    ]);
-    if (status !== 0) console.warn("[render] PowerPoint render failed; QA will skip PPTX fidelity checks.");
+    const renderDir = path.join(outDir, "pptx-render");
+    let status;
+    if (process.platform === "win32") {
+      log("render", "PowerPoint → PNG");
+      status = run("powershell", [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        path.join(ROOT, "scripts", "render-pptx.ps1"),
+        "-Pptx",
+        pptxFile,
+        "-OutDir",
+        renderDir,
+      ]);
+    } else {
+      log("render", "LibreOffice → PNG");
+      status = await renderPptxWithLibreOffice(pptxFile, renderDir);
+    }
+    if (status !== 0) console.warn("[render] PPTX render failed; QA will skip PPTX fidelity checks.");
   }
 
   if (args.qa) {
-    log("qa", "python scripts/qa.py");
-    const status = run("python", [path.join(ROOT, "scripts", "qa.py"), outDir]);
+    const python = process.platform === "win32" ? "python" : "python3";
+    log("qa", `${python} scripts/qa.py`);
+    const status = run(python, [path.join(ROOT, "scripts", "qa.py"), outDir]);
     if (status !== 0) process.exitCode = status;
   }
 

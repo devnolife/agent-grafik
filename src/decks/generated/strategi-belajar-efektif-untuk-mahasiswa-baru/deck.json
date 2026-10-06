@@ -1,0 +1,137 @@
+{
+  "slug": "strategi-belajar-efektif-untuk-mahasiswa-baru",
+  "title": "Strategi Belajar Efektif untuk Mahasiswa Baru",
+  "subtitle": "Teknik-teknik ini akan membantu Anda meraih prestasi dan menikmati masa perkuliahan.",
+  "lang": "id",
+  "theme": "paper",
+  "slides": [
+    {
+      "id": "01-cover",
+      "layout": "cover",
+      "title": "Belajar Efektif Membantu Sukses Kuliah",
+      "notes": "Selamat datang! Presentasi ini akan membahas strategi belajar yang efektif untuk mahasiswa baru. Kami akan fokus pada teknik-teknik yang terbukti membantu meningkatkan prestasi akademik dan kesejahteraan mental.",
+      "subtitle": "Teknik-teknik ini akan membantu Anda meraih prestasi dan menikmati masa perkuliahan.",
+      "image": {
+        "prompt": "A vibrant, abstract 3D illustration of interconnected glowing nodes representing knowledge, with pathways radiating outwards, symbolizing learning and growth. Use a cool color palette.",
+        "alt": "Ilustrasi abstrak pembelajaran",
+        "src": "01-cover-1dtv77p.jpg"
+      }
+    },
+    {
+      "id": "02-steps",
+      "layout": "steps",
+      "title": "Pomodoro Tingkatkan Fokus",
+      "notes": "Teknik Pomodoro membantu memecah waktu belajar menjadi interval yang lebih mudah dikelola. Ini meningkatkan fokus dan mencegah kelelahan mental. Istirahat penting untuk memproses informasi.",
+      "items": [
+        {
+          "title": "Fokus Intensif",
+          "text": "Belajar 25 menit tanpa gangguan.",
+          "icon": "clock",
+          "iconSrc": "icon-outline-clock.svg"
+        },
+        {
+          "title": "Istirahat Singkat",
+          "text": "Istirahat 5 menit untuk relaksasi.",
+          "icon": "refresh",
+          "iconSrc": "icon-outline-refresh.svg"
+        },
+        {
+          "title": "Ulangi Siklus",
+          "text": "Lakukan 4 siklus, lalu istirahat lebih lama.",
+          "icon": "repeat",
+          "iconSrc": "icon-outline-repeat.svg"
+        }
+      ]
+    },
+    {
+      "id": "03-compare",
+      "layout": "compare",
+      "title": "Aktif vs. Pasif",
+      "notes": "Active recall adalah teknik yang jauh lebih efektif daripada sekadar membaca ulang materi. Dengan memaksa otak untuk mengingat informasi, kita memperkuat koneksi saraf dan meningkatkan pemahaman.",
+      "columns": [
+        {
+          "heading": "Active Recall",
+          "points": [
+            "Menguji diri sendiri secara berkala.",
+            "Mencoba mengingat tanpa melihat catatan.",
+            "Memperkuat memori jangka panjang."
+          ],
+          "icon": "brain",
+          "iconSrc": "icon-outline-brain.svg"
+        },
+        {
+          "heading": "Passive Review",
+          "points": [
+            "Membaca ulang materi berulang-ulang.",
+            "Kurang efektif untuk retensi jangka panjang.",
+            "Memberikan ilusi pemahaman."
+          ],
+          "icon": "book",
+          "iconSrc": "icon-outline-book.svg"
+        }
+      ]
+    },
+    {
+      "id": "04-split",
+      "layout": "split",
+      "title": "Jaga Kesehatan Mental",
+      "notes": "Jangan lupakan pentingnya menjaga kesehatan mental. Stres dan kelelahan dapat menghambat proses belajar. Luangkan waktu untuk berolahraga, tidur yang cukup, dan bersosialisasi dengan teman.",
+      "body": "Keseimbangan antara belajar, istirahat, dan aktivitas sosial sangat penting untuk kesejahteraan Anda selama kuliah.",
+      "items": [
+        {
+          "title": "Olahraga Teratur",
+          "icon": "activity",
+          "iconSrc": "icon-outline-activity.svg"
+        },
+        {
+          "title": "Tidur Cukup",
+          "icon": "moon",
+          "iconSrc": "icon-outline-moon.svg"
+        },
+        {
+          "title": "Sosialisasi",
+          "icon": "users",
+          "iconSrc": "icon-outline-users.svg"
+        }
+      ],
+      "image": {
+        "prompt": "A serene, editorial illustration of a student meditating outdoors amidst lush greenery, with sunlight filtering through the trees. Focus on peacefulness and mindfulness.",
+        "alt": "Mahasiswa bermeditasi di alam",
+        "src": "04-split-1nnxmvb.jpg"
+      }
+    },
+    {
+      "id": "05-closing",
+      "layout": "closing",
+      "title": "Sukses Kuliah Ada di Tangan Anda",
+      "notes": "Ingatlah bahwa setiap orang belajar dengan cara yang berbeda. Cobalah berbagai teknik dan temukan apa yang paling cocok untuk Anda. Jangan ragu untuk meminta bantuan jika Anda mengalami kesulitan.",
+      "subtitle": "Terapkan strategi ini secara konsisten untuk meraih hasil terbaik.",
+      "items": [
+        {
+          "title": "Eksperimen Teknik",
+          "icon": "flask",
+          "iconSrc": "icon-outline-flask.svg"
+        },
+        {
+          "title": "Buat Jadwal",
+          "icon": "calendar",
+          "iconSrc": "icon-outline-calendar.svg"
+        },
+        {
+          "title": "Minta Bantuan",
+          "icon": "help-circle",
+          "iconSrc": "icon-outline-help-circle.svg"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "brief": "Strategi belajar efektif untuk mahasiswa baru: teknik pomodoro, active recall, spaced repetition, manajemen waktu, dan menjaga kesehatan mental selama kuliah.",
+    "model": "gemma3:27b",
+    "imageModel": "FLUX.2 [dev] Turbo",
+    "generatedAt": "2026-10-06T05:11:03.904Z",
+    "warnings": [
+      "Slide 2: angka \"25\", \"5\", \"4\" tidak ada di brief/sumber, periksa kebenarannya."
+    ]
+  }
+}

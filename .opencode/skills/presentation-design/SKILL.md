@@ -17,7 +17,11 @@ that compares the browser, PowerPoint, and PDF renders pixel by pixel.
 | `src/slides/primitives.tsx` | `Slide`, `Text`, `Shape`, `Visual`, `Icon`, `Illustration`, `Step`, the export contract (do not change casually) |
 | `src/decks/<slug>/` | One deck: `index.ts` (definition + notes), `tokens.ts` (palette, type roles), `theme.tsx` (slide root, footer), `slides/*.tsx`, `assets/` (re-toned illustrations), `brief.md`, `outline.md`, `source-notes.md` |
 | `src/decks/index.ts` | Deck registry (register new decks here) |
-| `src/studio/` | Preview studio: slide rail, scaled canvas, notes, present mode, export stage |
+| `src/studio/` | Preview studio: slide rail, scaled canvas, notes, present mode, export stage, AI panel (`create-sheet.tsx`), deck inspector, job dock |
+| `src/engine/` | Spec-driven decks: `spec.ts` (9 layouts + lenient normalizer), `themes.ts` (4 themes + image art direction), `layouts.tsx`/`blocks.tsx` (spec → slides) |
+| `src/decks/generated/<slug>/` | AI decks: `deck.json` + `assets/` (JPEG pictures, SVG icons). Registered automatically and hot-reloaded while the agent writes |
+| `agent/` | Local AI agent: `planner.ts` (Ollama), `comfy.ts` (FLUX.2 on ComfyUI), `pipeline.ts`, `cli.ts`, `vite-plugin.ts` (studio API `/api/agent/*`) |
+| `scripts/trace-icon.py` | FLUX.2 pictogram (PNG) → one-colour SVG (`fill="currentColor"`) |
 | `scripts/export.mjs` | Build → capture → PPTX → PDF → PowerPoint render → QA |
 | `scripts/qa.py` | Contrast, density, overflow, and browser vs PPTX vs PDF fidelity → `qa-report.md` |
 | `output/<slug>/` | `<slug>.pptx`, `<slug>.pdf`, `qa-report.md`, `compare/`, `browser/`, `pptx-render/`, `pdf-render/`, `layers/` |
@@ -27,17 +31,39 @@ Reference deck that already passes QA: `src/decks/ethical-hacking/` (copy its st
 ## Commands
 
 ```bash
-npm run dev                        # studio → http://localhost:5173/?deck=<slug>  (keys: ←/→, F present, N notes)
+npm run dev                        # studio → http://localhost:5173/?deck=<slug>  (keys: ←/→, F present, N notes, I panel, G AI panel)
 npm run typecheck                  # must pass before export
 npm run export -- <slug>           # full pipeline (~20–40 s); flags: --skip-build --no-render --no-qa
 python scripts/qa.py output/<slug> # re-run QA only
 npm run test:studio                # studio smoke test (keyboard, a11y, present mode)
 node scripts/contact-sheet.mjs <folder> [--bg=#hex] [--out=output/_sheets/x.png]   # compare illustration candidates
 python scripts/recolor-illustration.py IN.svg --out src/decks/<slug>/assets/x.svg --mode outline|tonal --bg #.. --line #.. --accent #..
+
+# Local AI agent (Ollama + ComfyUI FLUX.2 on this server)
+npm run agent -- status                                   # Ollama models, ComfyUI, free VRAM
+npm run agent -- deck "<brief>" --sources notes.md --slides 8 --theme aurora|paper|forest|sunset \
+     --icons lucide|solid|outline [--no-images] [--review] [--export]     # → src/decks/generated/<slug>/
+npm run agent -- repaint <slug> [slide-id]                # new pictures (after a theme change or a bad one)
+npm run agent -- restyle <slug> lucide|solid|outline      # redraw every icon of a deck
+npm run agent -- icons "rocket, team of three, shield" --style solid|outline   # SVG set → output/icons/<set>/
+npm run agent -- image "<description>" --theme free|aurora|… --shape wide|portrait|square --count 2   # → output/images/
 ```
 
 Start the dev server in the background (for example `Start-Process npm -ArgumentList "run","dev"`), not in a blocking shell.
 PowerPoint must not have `output/<slug>/<slug>.pptx` open during export, because the folder is recreated.
+
+## Two ways to build a deck
+
+- **Agent deck (fast, standard layouts).** `npm run agent -- deck "<brief>"` (or "Buat dengan AI" in the studio) plans the
+  storyline with Ollama (`gemma4` by default), writes `deck.json`, then FLUX.2 draws the icons (traced to SVG) and the
+  pictures in the theme's art direction. Refine by editing `deck.json` (text, layout, `image.prompt`) and run
+  `repaint`/`restyle` for visuals. The gates still apply: export, read `qa-report.md`, look at `compare/`.
+  Numbers the planner wrote that are not in the brief/sources land in `meta.warnings` (studio panel "Perlu dicek"):
+  verify or remove every one before delivery.
+- **Hand-built deck (bespoke design).** The phased workflow below, for brand systems, diagrams and custom layouts.
+
+The ComfyUI server is shared (2× L40S behind a dispatcher). Never call the global `/interrupt`; cancel through the agent
+(Ctrl+C or "Batalkan"), which only cancels its own prompt ids. A 7-slide deck with AI icons and pictures takes 3–5 minutes.
 
 ## Workflow (phases and gates)
 
@@ -78,6 +104,9 @@ PowerPoint must not have `output/<slug>/<slug>.pptx` open during export, because
   - Concept slides: top-right next to the title (about 400×270 px), or as the left/right half.
   - Never put an illustration behind text.
 - unDraw licence: free, no attribution, but **do not redistribute the library** as a collection. Keep only the re-toned copies a deck uses.
+- **AI alternatives on this server:** `npm run agent -- icons "…"` draws a matching SVG icon set (one colour, takes
+  `currentColor`), and `npm run agent -- image "…" --theme <id>` paints a FLUX.2 picture in a deck theme's art direction.
+  Pictures must not contain text or UI; run with `--review` (vision model check) or look at them yourself.
 
 ## Writing a slide
 

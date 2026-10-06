@@ -53,6 +53,10 @@ const FACES = {
     700: ["Fira Code", true],
   },
   calibri: { 300: "Calibri Light", 400: "Calibri", 700: ["Calibri", true] },
+  // Metric-compatible with Liberation Sans/Serif/Mono, so Linux renders match PowerPoint line breaks.
+  arial: { 400: "Arial", 700: ["Arial", true] },
+  "times new roman": { 400: "Times New Roman", 700: ["Times New Roman", true] },
+  "courier new": { 400: "Courier New", 700: ["Courier New", true] },
   cambria: { 400: "Cambria", 700: ["Cambria", true] },
   consolas: { 400: "Consolas", 700: ["Consolas", true] },
   georgia: { 400: "Georgia", 700: ["Georgia", true] },

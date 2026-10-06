@@ -21,8 +21,8 @@ aturan desain. Jangan mulai mendesain sebelum memuatnya.
    1920×1080 px (1 px = 0,5 pt). Jangan membuat PPTX langsung dengan alat lain.
 3. **Patuhi kontrak ekspor.** Semua kata di slide masuk `<Text>`, kotak/kartu berwarna solid memakai `<Shape>`,
    dan visual kompleks (SVG, ilustrasi, efek) memakai `<Visual>`. Teks di luar `<Text>` tidak dapat diedit.
-4. **Hanya font yang terpasang** (Bahnschrift, Segoe UI, Cascadia Mono/Code, JetBrains Mono, Fira Code, Consolas,
-   Calibri, Cambria, Georgia, Verdana). PowerPoint tidak bisa memuat web font.
+4. **Hanya font yang terpasang** (lihat `scripts/lib/fonts.js`). Di server Linux ini pakai Arial (metrik sama dengan
+   Liberation Sans, sehingga pemenggalan baris PowerPoint sama dengan browser). PowerPoint tidak bisa memuat web font.
 5. **Satu gagasan per slide.** Judul berupa kalimat inti (takeaway), dan penjelasan panjang masuk `notes`.
 6. **Visual wajib ada.** Setiap item konsep (kartu, langkah, poin) memakai ikon `<Icon>` (Lucide, satu gaya).
    Cover dan setiap slide konsep/proses/perbandingan punya minimal satu ilustrasi `<Illustration>` yang
@@ -35,6 +35,9 @@ aturan desain. Jangan mulai mendesain sebelum memuatnya.
 9. **Muat skill secukupnya.** Ikuti `references/skill-routing.md`: maksimal 2–3 skill per fase, jangan semuanya sekaligus.
 10. **Jangan ubah pipeline** (`scripts/`, `src/slides/primitives.tsx`, `src/studio/`) kecuali kontraknya memang
     perlu diperbaiki. Jika diubah, jalankan ulang ekspor untuk semua deck dan laporkan alasannya.
+11. **Jalur agent AI.** Untuk deck standar yang perlu cepat, pakai `npm run agent -- deck "<brief>"` (cek dulu
+    `npm run agent -- status`). Hasilnya `src/decks/generated/<slug>/deck.json`: perbaiki isinya di sana, bukan di PPTX.
+    Setiap angka di `meta.warnings` wajib dicek ke sumber atau dihapus sebelum diserahkan.
 
 ## Gaya komunikasi
 
